@@ -1,4 +1,4 @@
-namespace Bogey.Shared.Changelog;
+namespace Lattice.Shared.Changelog;
 
 public enum ChangeType
 {

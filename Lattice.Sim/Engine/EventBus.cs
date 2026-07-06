@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 public sealed class EventBus
 {

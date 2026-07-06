@@ -1,4 +1,4 @@
-namespace Bogey.Shared.Console;
+namespace Lattice.Shared.Console;
 
 public interface IAppControl
 {

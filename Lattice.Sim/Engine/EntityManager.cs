@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 public sealed class EntityManager
 {

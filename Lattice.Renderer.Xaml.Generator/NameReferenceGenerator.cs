@@ -8,14 +8,14 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Bogey.Renderer.Xaml.Generator;
+namespace Lattice.Renderer.Xaml.Generator;
 
 [Generator]
 public sealed class NameReferenceGenerator : IIncrementalGenerator
 {
-    private const string ControlsNamespace = "global::Bogey.Renderer.Ui.Controls";
-    private const string XamlNamespace = "global::Bogey.Renderer.Ui.Xaml";
-    private const string MarkerAttribute = "Bogey.Renderer.Ui.Xaml.GenerateTypedNameReferencesAttribute";
+    private const string ControlsNamespace = "global::Lattice.Renderer.Ui.Controls";
+    private const string XamlNamespace = "global::Lattice.Renderer.Ui.Xaml";
+    private const string MarkerAttribute = "Lattice.Renderer.Ui.Xaml.GenerateTypedNameReferencesAttribute";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {

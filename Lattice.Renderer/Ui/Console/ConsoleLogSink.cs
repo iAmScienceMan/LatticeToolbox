@@ -1,6 +1,6 @@
-using Bogey.Logging;
+using Lattice.Logging;
 
-namespace Bogey.Renderer.Ui.Console;
+namespace Lattice.Renderer.Ui.Console;
 
 internal sealed class ConsoleLogSink : ILogHandler
 {

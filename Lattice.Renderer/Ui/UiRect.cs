@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Bogey.Renderer.Ui;
+namespace Lattice.Renderer.Ui;
 
 
 public readonly record struct UiRect(float X, float Y, float W, float H)

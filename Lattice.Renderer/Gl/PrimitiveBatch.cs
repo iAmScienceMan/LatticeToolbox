@@ -4,7 +4,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Gl;
+namespace Lattice.Renderer.Gl;
 
 public sealed class PrimitiveBatch : IDisposable
 {

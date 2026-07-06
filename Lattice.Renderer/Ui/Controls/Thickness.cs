@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Bogey.Renderer.Ui.Controls;
+namespace Lattice.Renderer.Ui.Controls;
 
 public readonly record struct Thickness(float Left, float Top, float Right, float Bottom)
 {

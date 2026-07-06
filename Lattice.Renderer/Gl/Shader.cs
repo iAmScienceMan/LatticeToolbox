@@ -1,7 +1,7 @@
 using System;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Gl;
+namespace Lattice.Renderer.Gl;
 
 public sealed class Shader : IDisposable
 {

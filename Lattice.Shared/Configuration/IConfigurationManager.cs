@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Bogey.Shared.Configuration;
+namespace Lattice.Shared.Configuration;
 
 public interface IConfigurationManager
 {

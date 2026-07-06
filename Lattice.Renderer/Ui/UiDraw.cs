@@ -1,7 +1,7 @@
 using System.Numerics;
-using Bogey.Renderer.Gl;
+using Lattice.Renderer.Gl;
 
-namespace Bogey.Renderer.Ui;
+namespace Lattice.Renderer.Ui;
 
 internal static class UiDraw
 {

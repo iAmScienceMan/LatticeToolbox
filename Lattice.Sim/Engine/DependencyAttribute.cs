@@ -1,6 +1,6 @@
 using System;
 
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
 public sealed class DependencyAttribute : Attribute

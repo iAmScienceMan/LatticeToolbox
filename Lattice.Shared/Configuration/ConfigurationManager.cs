@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Bogey.Logging;
+using Lattice.Logging;
 
-namespace Bogey.Shared.Configuration;
+namespace Lattice.Shared.Configuration;
 
 public sealed class ConfigurationManager : IConfigurationManager
 {
@@ -78,7 +78,7 @@ public sealed class ConfigurationManager : IConfigurationManager
         }
 
         StringBuilder builder = new();
-        builder.AppendLine("# Project Bogey settings - saved automatically.");
+        builder.AppendLine("# Settings saved automatically.");
         foreach (CVarDef def in _defs.Values
                      .Where(d => d.Flags.HasFlag(CVarFlags.Archive) && !_values[d.Name].Equals(d.DefaultBoxed))
                      .OrderBy(static d => d.Name, StringComparer.Ordinal))

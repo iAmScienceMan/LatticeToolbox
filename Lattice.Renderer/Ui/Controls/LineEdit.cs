@@ -1,10 +1,10 @@
 using System;
 using System.Numerics;
-using Bogey.Renderer.Gl;
-using Bogey.Renderer.Text;
+using Lattice.Renderer.Gl;
+using Lattice.Renderer.Text;
 using Silk.NET.Input;
 
-namespace Bogey.Renderer.Ui.Controls;
+namespace Lattice.Renderer.Ui.Controls;
 
 public sealed class LineEdit : Control
 {

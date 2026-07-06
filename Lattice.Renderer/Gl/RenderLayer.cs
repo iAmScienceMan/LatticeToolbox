@@ -1,4 +1,4 @@
-namespace Bogey.Renderer.Gl;
+namespace Lattice.Renderer.Gl;
 
 public enum RenderLayer
 {

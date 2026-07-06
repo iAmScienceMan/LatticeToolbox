@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bogey.Shared.Console;
+namespace Lattice.Shared.Console;
 
 public sealed class HelpCommand : ConsoleCommand
 {

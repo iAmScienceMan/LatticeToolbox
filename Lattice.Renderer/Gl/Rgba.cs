@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Bogey.Renderer.Gl;
+namespace Lattice.Renderer.Gl;
 
 public readonly record struct Rgba(float R, float G, float B, float A)
 {

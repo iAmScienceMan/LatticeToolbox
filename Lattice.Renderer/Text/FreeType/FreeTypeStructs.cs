@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Bogey.Renderer.Text.FreeType;
+namespace Lattice.Renderer.Text.FreeType;
 
 [StructLayout(LayoutKind.Sequential)]
 internal struct FT_Generic

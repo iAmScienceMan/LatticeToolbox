@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace Bogey.Renderer.Ui.Controls;
+namespace Lattice.Renderer.Ui.Controls;
 
 public sealed class GridContainer : Control
 {

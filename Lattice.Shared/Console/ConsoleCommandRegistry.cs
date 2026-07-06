@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Bogey.Logging;
+using Lattice.Logging;
 
-namespace Bogey.Shared.Console;
+namespace Lattice.Shared.Console;
 
 public sealed class ConsoleCommandRegistry
 {
-    private const string AssemblyPrefix = "Bogey.";
+    private static readonly string[] AssemblyPrefixes = { "Lattice.", "Content." };
 
     private readonly Dictionary<string, IConsoleCommand> _commands = new(StringComparer.OrdinalIgnoreCase);
     private readonly ILogbook _log;
@@ -149,7 +149,7 @@ public sealed class ConsoleCommandRegistry
 
     private IEnumerable<Type> CommandTypes()
     {
-        foreach (Assembly assembly in BogeyAssemblies())
+        foreach (Assembly assembly in DiscoverableAssemblies())
         {
             Type[] types;
             try
@@ -172,7 +172,10 @@ public sealed class ConsoleCommandRegistry
         }
     }
 
-    private static IEnumerable<Assembly> BogeyAssemblies()
+    private static bool IsDiscoverable(string name)
+        => AssemblyPrefixes.Any(prefix => name.StartsWith(prefix, StringComparison.Ordinal));
+
+    private static IEnumerable<Assembly> DiscoverableAssemblies()
     {
         HashSet<string> seen = new(StringComparer.Ordinal);
         Queue<Assembly> pending = new();
@@ -186,7 +189,7 @@ public sealed class ConsoleCommandRegistry
         {
             Assembly assembly = pending.Dequeue();
             string name = assembly.GetName().Name ?? string.Empty;
-            if (!name.StartsWith(AssemblyPrefix, StringComparison.Ordinal) || !seen.Add(name))
+            if (!IsDiscoverable(name) || !seen.Add(name))
             {
                 continue;
             }
@@ -196,7 +199,7 @@ public sealed class ConsoleCommandRegistry
             foreach (AssemblyName referenced in assembly.GetReferencedAssemblies())
             {
                 if (referenced.Name is { } refName
-                    && refName.StartsWith(AssemblyPrefix, StringComparison.Ordinal)
+                    && IsDiscoverable(refName)
                     && !seen.Contains(refName))
                 {
                     Assembly? resolved = TryLoad(referenced);

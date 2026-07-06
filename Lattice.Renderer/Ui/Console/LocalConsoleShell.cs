@@ -1,7 +1,7 @@
-using Bogey.Logging;
-using Bogey.Shared.Console;
+using Lattice.Logging;
+using Lattice.Shared.Console;
 
-namespace Bogey.Renderer.Ui.Console;
+namespace Lattice.Renderer.Ui.Console;
 
 internal sealed class LocalConsoleShell : IConsoleShell
 {

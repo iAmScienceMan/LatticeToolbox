@@ -1,9 +1,9 @@
 using System.Numerics;
-using Bogey.Renderer.Gl;
+using Lattice.Renderer.Gl;
 
-namespace Bogey.Renderer.Ui;
+namespace Lattice.Renderer.Ui;
 
-internal static class MenuBackground
+public static class MenuBackground
 {
     private const float Spacing = 48f;
 

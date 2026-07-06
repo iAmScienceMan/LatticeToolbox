@@ -1,4 +1,4 @@
-namespace Bogey.Logging;
+namespace Lattice.Logging;
 
 public enum LogLevel
 {

@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Bogey.Logging;
-using Bogey.Renderer.Gl;
-using Bogey.Renderer.Text;
-using Bogey.Renderer.Ui.Controls;
-using Bogey.Shared.Console;
+using Lattice.Logging;
+using Lattice.Renderer.Gl;
+using Lattice.Renderer.Text;
+using Lattice.Renderer.Ui.Controls;
+using Lattice.Shared.Console;
 using Silk.NET.Input;
 
-namespace Bogey.Renderer.Ui.Console;
+namespace Lattice.Renderer.Ui.Console;
 
 public sealed class DevConsole : Control
 {

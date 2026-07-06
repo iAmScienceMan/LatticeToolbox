@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace Bogey.Renderer.Camera;
+namespace Lattice.Renderer.Camera;
 
 public sealed class Camera2D
 {

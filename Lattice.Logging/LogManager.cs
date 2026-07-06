@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Bogey.Logging;
+namespace Lattice.Logging;
 
 public sealed class LogManager : ILogManager
 {

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Bogey.Logging;
-using Bogey.Shared.Configuration;
+using Lattice.Logging;
+using Lattice.Shared.Configuration;
 using YamlDotNet.Serialization;
 
-namespace Bogey.Shared.Changelog;
+namespace Lattice.Shared.Changelog;
 
 public sealed class ChangelogManager : IChangelogManager
 {

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Bogey.Renderer.Gl;
+using Lattice.Renderer.Gl;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Text;
+namespace Lattice.Renderer.Text;
 
 public sealed class TextBatch : IDisposable
 {

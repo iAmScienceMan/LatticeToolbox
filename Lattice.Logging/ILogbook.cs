@@ -1,6 +1,6 @@
 using System;
 
-namespace Bogey.Logging;
+namespace Lattice.Logging;
 
 public interface ILogbook
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Bogey.Logging;
+namespace Lattice.Logging;
 
 public sealed class ConsoleLogHandler : ILogHandler
 {

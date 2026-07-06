@@ -1,6 +1,6 @@
-using Bogey.Logging;
+using Lattice.Logging;
 
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 public abstract class SystemBase
 {

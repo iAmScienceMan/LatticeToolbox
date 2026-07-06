@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Bogey.Renderer.Ui.Controls;
+using Lattice.Renderer.Ui.Controls;
 
-namespace Bogey.Renderer.Ui.Xaml;
+namespace Lattice.Renderer.Ui.Xaml;
 
 public sealed class NameScope
 {

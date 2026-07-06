@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Bogey.Renderer.Text.FreeType;
+namespace Lattice.Renderer.Text.FreeType;
 
 internal static class FreeTypeNative
 {
@@ -49,7 +49,7 @@ internal static class FreeTypeNative
 
     private static string[] Candidates()
     {
-        string? overridePath = Environment.GetEnvironmentVariable("BOGEY_FREETYPE");
+        string? overridePath = Environment.GetEnvironmentVariable("LATTICE_FREETYPE");
         return new[]
         {
             overridePath ?? string.Empty,

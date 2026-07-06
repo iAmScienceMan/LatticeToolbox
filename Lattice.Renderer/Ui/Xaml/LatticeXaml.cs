@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
-using Bogey.Renderer.Gl;
-using Bogey.Renderer.Ui.Controls;
+using Lattice.Renderer.Gl;
+using Lattice.Renderer.Ui.Controls;
 
-namespace Bogey.Renderer.Ui.Xaml;
+namespace Lattice.Renderer.Ui.Xaml;
 
-public static class BogeyXaml
+public static class LatticeXaml
 {
     
     public static void Load(Control self)

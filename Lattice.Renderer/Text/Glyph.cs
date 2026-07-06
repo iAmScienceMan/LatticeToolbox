@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Bogey.Renderer.Text;
+namespace Lattice.Renderer.Text;
 
 public readonly record struct Glyph(
     Vector4 Uv,

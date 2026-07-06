@@ -1,4 +1,4 @@
-namespace Bogey.Renderer.Ui.Xaml;
+namespace Lattice.Renderer.Ui.Xaml;
 
 public interface IXamlNameResolver
 {

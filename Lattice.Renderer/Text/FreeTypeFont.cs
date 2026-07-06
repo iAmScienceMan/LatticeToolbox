@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Bogey.Renderer.Text.FreeType;
+using Lattice.Renderer.Text.FreeType;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Text;
+namespace Lattice.Renderer.Text;
 
 public sealed class FreeTypeFont : IFont
 {

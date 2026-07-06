@@ -1,6 +1,6 @@
-using Bogey.Logging;
+using Lattice.Logging;
 
-namespace Bogey.Shared.Console;
+namespace Lattice.Shared.Console;
 
 public interface IConsoleShell
 {

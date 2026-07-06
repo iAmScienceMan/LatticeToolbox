@@ -1,9 +1,9 @@
 using System;
 using System.Numerics;
-using Bogey.Renderer.Gl;
-using Bogey.Renderer.Text;
+using Lattice.Renderer.Gl;
+using Lattice.Renderer.Text;
 
-namespace Bogey.Renderer.Ui.Controls;
+namespace Lattice.Renderer.Ui.Controls;
 
 public enum Orientation
 {

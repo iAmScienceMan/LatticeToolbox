@@ -1,7 +1,7 @@
 using System;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Text;
+namespace Lattice.Renderer.Text;
 
 public interface IFont : IDisposable
 {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Bogey.Shared.Changelog;
+namespace Lattice.Shared.Changelog;
 
 public interface IChangelogManager
 {

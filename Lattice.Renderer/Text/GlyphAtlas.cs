@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using Silk.NET.OpenGL;
 
-namespace Bogey.Renderer.Text;
+namespace Lattice.Renderer.Text;
 
 internal sealed class GlyphAtlas : IDisposable
 {

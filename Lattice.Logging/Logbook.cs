@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace Bogey.Logging;
+namespace Lattice.Logging;
 
 public sealed class Logbook : ILogbook
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 public sealed class SystemManager
 {

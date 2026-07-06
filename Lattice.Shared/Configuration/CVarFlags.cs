@@ -1,6 +1,6 @@
 using System;
 
-namespace Bogey.Shared.Configuration;
+namespace Lattice.Shared.Configuration;
 
 [Flags]
 public enum CVarFlags

@@ -1,4 +1,4 @@
-namespace Bogey.Sim.Engine;
+namespace Lattice.Sim.Engine;
 
 public sealed class SimClock
 {
