@@ -7,7 +7,7 @@ namespace Lattice.Sim.Engine;
 public sealed class EntityManager
 {
     private readonly List<int> _entities = new();
-    private readonly Dictionary<Type, object> _stores = new();
+    private readonly Dictionary<Type, Dictionary<int, object>> _stores = new();
     private int _nextId;
 
     public IReadOnlyList<int> Entities => _entities;
@@ -22,36 +22,46 @@ public sealed class EntityManager
     public void DestroyEntity(int entityId)
     {
         _entities.Remove(entityId);
-        foreach (object store in _stores.Values)
+        foreach (Dictionary<int, object> store in _stores.Values)
         {
-            ((System.Collections.IDictionary)store).Remove(entityId);
+            store.Remove(entityId);
         }
     }
 
     public void AddComponent<T>(int entityId, T component)
         where T : class
+        => StoreFor(typeof(T))[entityId] = component;
+
+    public void AddComponent(int entityId, object component)
+        => StoreFor(component.GetType())[entityId] = component;
+
+    public void RemoveComponent<T>(int entityId)
+        where T : class
     {
-        Store<T>()[entityId] = component;
+        if (_stores.TryGetValue(typeof(T), out Dictionary<int, object>? store))
+        {
+            store.Remove(entityId);
+        }
     }
 
     public T GetComponent<T>(int entityId)
         where T : class
     {
-        if (!Store<T>().TryGetValue(entityId, out T? component))
+        if (StoreFor(typeof(T)).TryGetValue(entityId, out object? component))
         {
-            throw new InvalidOperationException(
-                $"Entity {entityId} has no component of type {typeof(T).Name}.");
+            return (T)component;
         }
 
-        return component;
+        throw new InvalidOperationException(
+            $"Entity {entityId} has no component of type {typeof(T).Name}.");
     }
 
     public bool TryGetComponent<T>(int entityId, out T component)
         where T : class
     {
-        if (Store<T>().TryGetValue(entityId, out T? found))
+        if (StoreFor(typeof(T)).TryGetValue(entityId, out object? found))
         {
-            component = found;
+            component = (T)found;
             return true;
         }
 
@@ -61,31 +71,30 @@ public sealed class EntityManager
 
     public bool HasComponent<T>(int entityId)
         where T : class
-        => Store<T>().ContainsKey(entityId);
+        => StoreFor(typeof(T)).ContainsKey(entityId);
 
     public IEnumerable<int> Query<T>()
         where T : class
-        => Store<T>().Keys.OrderBy(static id => id);
+        => StoreFor(typeof(T)).Keys.OrderBy(static id => id);
 
     public IEnumerable<int> Query<T1, T2>()
         where T1 : class
         where T2 : class
     {
-        Dictionary<int, T2> second = Store<T2>();
-        return Store<T1>().Keys
+        Dictionary<int, object> second = StoreFor(typeof(T2));
+        return StoreFor(typeof(T1)).Keys
             .Where(second.ContainsKey)
             .OrderBy(static id => id);
     }
 
-    private Dictionary<int, T> Store<T>()
-        where T : class
+    private Dictionary<int, object> StoreFor(Type type)
     {
-        if (!_stores.TryGetValue(typeof(T), out object? store))
+        if (!_stores.TryGetValue(type, out Dictionary<int, object>? store))
         {
-            store = new Dictionary<int, T>();
-            _stores[typeof(T)] = store;
+            store = new Dictionary<int, object>();
+            _stores[type] = store;
         }
 
-        return (Dictionary<int, T>)store;
+        return store;
     }
 }
