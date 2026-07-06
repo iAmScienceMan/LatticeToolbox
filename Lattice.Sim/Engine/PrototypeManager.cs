@@ -39,6 +39,14 @@ public sealed class PrototypeManager
             ? prototype
             : throw new InvalidOperationException($"Unknown prototype '{id}'.");
 
+    public void Register(string id, string? name, Func<IReadOnlyList<IComponent>> factory)
+    {
+        if (!_prototypes.TryAdd(id, new EntityPrototype(id, name, factory)))
+        {
+            throw new InvalidOperationException($"Duplicate prototype id '{id}'.");
+        }
+    }
+
     public void LoadDirectory(string directory)
     {
         if (!Directory.Exists(directory))
@@ -69,7 +77,7 @@ public sealed class PrototypeManager
                 throw new InvalidOperationException($"A prototype in '{source}' is missing an id.");
             }
 
-            List<PrototypeComponent> components = new();
+            List<ComponentSpec> specs = new();
             foreach (Dictionary<string, object?> entry in raw.Components ?? new List<Dictionary<string, object?>>())
             {
                 if (!entry.TryGetValue("type", out object? typeValue) || typeValue is not string typeName)
@@ -83,24 +91,11 @@ public sealed class PrototypeManager
                     .Where(pair => !string.Equals(pair.Key, "type", StringComparison.Ordinal))
                     .ToDictionary(pair => pair.Key, pair => pair.Value);
 
-                components.Add(new PrototypeComponent
-                {
-                    Type = type,
-                    Yaml = _fieldSerializer.Serialize(fields),
-                });
+                specs.Add(new ComponentSpec(type, _fieldSerializer.Serialize(fields)));
             }
 
-            EntityPrototype prototype = new()
-            {
-                Id = raw.Id,
-                Name = raw.Name,
-                Components = components,
-            };
-
-            if (!_prototypes.TryAdd(raw.Id, prototype))
-            {
-                throw new InvalidOperationException($"Duplicate prototype id '{raw.Id}' in '{source}'.");
-            }
+            List<ComponentSpec> captured = specs;
+            Register(raw.Id, raw.Name, () => captured.Select(Instantiate).ToList());
         }
     }
 
@@ -109,15 +104,19 @@ public sealed class PrototypeManager
         EntityPrototype prototype = Get(prototypeId);
         int entity = entities.CreateEntity();
 
-        foreach (PrototypeComponent component in prototype.Components)
+        foreach (IComponent component in prototype.Instantiate())
         {
-            object instance = _componentDeserializer.Deserialize(new StringReader(component.Yaml), component.Type)
-                              ?? Activator.CreateInstance(component.Type)!;
-            entities.AddComponent(entity, instance);
+            entities.AddComponent(entity, component);
         }
 
         return entity;
     }
+
+    private IComponent Instantiate(ComponentSpec spec)
+        => (IComponent)(_componentDeserializer.Deserialize(new StringReader(spec.Yaml), spec.Type)
+                        ?? Activator.CreateInstance(spec.Type)!);
+
+    private readonly record struct ComponentSpec(Type Type, string Yaml);
 
     private sealed class RawPrototype
     {

@@ -30,7 +30,7 @@ public sealed class EntityManager
 
     public void AddComponent<T>(int entityId, T component)
         where T : class
-        => StoreFor(typeof(T))[entityId] = component;
+        => StoreFor(component.GetType())[entityId] = component;
 
     public void AddComponent(int entityId, object component)
         => StoreFor(component.GetType())[entityId] = component;

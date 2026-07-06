@@ -56,7 +56,11 @@ public abstract class EntitySystem : SystemBase
         => Entities.RemoveComponent<T>(entity);
 
     protected int Spawn(string prototypeId)
-        => Prototypes.SpawnEntity(Entities, prototypeId);
+    {
+        int entity = Prototypes.SpawnEntity(Entities, prototypeId);
+        Bus.PublishDirected(entity, new ComponentInit());
+        return entity;
+    }
 
     protected void Del(int entity)
         => Entities.DestroyEntity(entity);
